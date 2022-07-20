@@ -22,23 +22,25 @@ public class TC_TestRegister extends Base {
 	
 	public static WebDriver driver;
 	
+	//public HomePage hm ;
+	
 	@Test(dataProvider="RegisterData")
 	public void tc1(String firstname,String lastName,String email,String mobile
 			,String martialStatus,String dOB  ,String addressLine1,String addressLine2,String country,String state,
 			String city,String accountType, String accountSubType,String balance ,String transferLimit,String branchCode,String loanDuration,String loanAmount ) throws Exception {
 
-		
+		     logger.info("for info : from testregister class");
             // printing excel row value 		
 			System.out.println(firstname + lastName + email + mobile + martialStatus + dOB + addressLine1 + addressLine2
 					+ country + state + city + accountType + accountSubType + balance + transferLimit + branchCode
 					+ loanDuration + loanAmount);
 
 			//driver = new EdgeDriver();
-//			driver = new ChromeDriver();
-//			driver.manage().window().maximize();
-//			driver.get(baseURL);
+        	driver = new ChromeDriver();
+			driver.manage().window().maximize();
+		    driver.get(baseURL);
 //
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
 			// 1.HomePage
 			HomePage hm = new HomePage(driver);

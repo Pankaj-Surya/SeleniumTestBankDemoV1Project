@@ -6,7 +6,8 @@
     <classes>
       <class name="com.TestBankDemo2.TestCases.TC_TestRegister">
         <methods>
-          <include name="tc1" invocation-numbers="0 1 2 3 4"/>
+          <include name="teardown"/>
+          <include name="tc1" invocation-numbers="4"/>
           <include name="setup"/>
         </methods>
       </class> <!-- com.TestBankDemo2.TestCases.TC_TestRegister -->

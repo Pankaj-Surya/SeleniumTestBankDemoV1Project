@@ -16,7 +16,7 @@ public class AddressDetailsPage {
 		//3.Locaters
 		By addLine1 =By.id("addressLine1");
 		By addLine2=By.id("addressLine2");
-		By country =By.id("country");
+		By country =By.xpath("//select[@id='country']");
 		By state =By.id("state");
 		By city=By.id("city");
 		By AddsubmitBtn =By.xpath("//input[@type='submit']");

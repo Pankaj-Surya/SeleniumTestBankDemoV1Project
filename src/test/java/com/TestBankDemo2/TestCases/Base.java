@@ -3,14 +3,15 @@ package com.TestBankDemo2.TestCases;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.*;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -37,12 +38,21 @@ public class Base {
 	//1
 	public static WebDriver driver;
 	
+	public static Logger logger;
+	
 	
 	@Parameters("browser")
-	@BeforeClass
+	@BeforeTest
 	public  void setup(String br) throws Exception {
 	
+		logger = LogManager.getLogger("Base");
 		System.out.println(baseURL);
+		logger.info("for info only");
+		logger.fatal("fatal msg");
+
+		logger.debug("for debug");
+		logger.error("error message");
+		logger.warn("warning message");
 		
 		if(br.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", ".\\Drivers\\chromedriver.exe");							
@@ -55,7 +65,7 @@ public class Base {
 			driver = new EdgeDriver();
 		}		
 		driver.manage().window().maximize();
-		driver.get(baseURL);
+		//driver.get(baseURL);
        //System.setProperty("webdriver.chrome.driver", "E:\\Selenium\\Demos\\Selenium Practi\\TesBankDemos\\TestBanDemo2\\TestBankDemo2\\Drivers\\geckodriver.exe");	
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -64,7 +74,7 @@ public class Base {
 	
 	}
 	
-	
+	@AfterTest
 	public void teardown() {	
 		driver.quit();
 	}
